@@ -1,0 +1,40 @@
+.nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 200%;
+  color: white;
+  background-color: brown;
+  box-shadow: 5% 5%;
+}
+#posts{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0% auto;
+  width: 80%;
+}
+#blogs{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  padding: 10% 10%;
+  margin-top: 10%;
+  gap: 10%;
+  background-color: rgb(42, 42, 118);
+  border-radius: 5%;
+  color: white;
+}
+#elementN{
+  font-size: 150%;
+  color: rgb(185, 243, 70);
+}
+form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10%;
+}
