@@ -7,5 +7,4 @@ let db = [{
     blog:"Neki komentar"
 }];
 
-
 export default db;

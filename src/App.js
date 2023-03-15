@@ -18,13 +18,13 @@ function App() {
       <br><div class="elementB">${element.blog}</div>
       </div>`
     }
-    console.log(htmlBlogs);
+    //console.log(htmlBlogs); OVDE SVE RADI KAKO TREBA KAD KLIKNEM NA -"SAVE"
     return htmlBlogs;
   }
   createBlog()
 
   console.log(db);
-  
+  //console.log(htmlBlogs); OVDE TEK PRORADI KAD KLIKNEM U VS CTRL+S, isto vazi i za db- ZATO NE MOZE DA PRIKAZE PODATKE U HTML
   
   const save = function saveBlog(e) {
     e.preventDefault();
