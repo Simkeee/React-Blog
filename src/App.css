@@ -1,3 +1,4 @@
+
 .nav{
   display: flex;
   justify-content: center;
@@ -6,6 +7,7 @@
   color: white;
   background-color: brown;
   box-shadow: 5% 5%;
+  margin-bottom: 5%;
 }
 #posts{
   display: flex;
@@ -14,20 +16,20 @@
   margin: 0% auto;
   width: 80%;
 }
-#blogs{
+.blogs{
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
   width: 100%;
   padding: 10% 10%;
-  margin-top: 10%;
+  margin-bottom: 5%;
   gap: 10%;
   background-color: rgb(42, 42, 118);
   border-radius: 5%;
   color: white;
 }
-#elementN{
+.elementN{
   font-size: 150%;
   color: rgb(185, 243, 70);
 }

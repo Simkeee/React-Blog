@@ -3,15 +3,49 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import db from './db';
 
+
 function App() {
-  return (
-    <div className = 'container-fluid'>
+
+  var htmlBlogs=''
+  function createBlog() {
+    //let posts = document.getElementById('posts');
+    //console.log(db);
+    //console.log(db.length);
+    for (let i = 0; i < db.length; i++) {
+      const element = db[i];
+      htmlBlogs +=`<div class = "blogs">
+      <div class="elementN">${element.name}:</div>
+      <br><div class="elementB">${element.blog}</div>
+      </div>`
+    }
+    console.log(htmlBlogs);
+    return htmlBlogs;
+  }
+  createBlog()
+
+  console.log(db);
+  
+  
+  const save = function saveBlog(e) {
+    e.preventDefault();
+    let newName = document.getElementById('name');
+    let newBlog = document.getElementById('newBlog');
+    const newEnter = {
+      name:newName.value,
+      blog:newBlog.value
+    }
+    db.push(newEnter)
+    createBlog()
+  }
+
+return (
+<div className = 'container-fluid'>
 <ul className="nav">
   <li className="nav-item">
     <b>My React Blog</b>
   </li>
 </ul>
-<div className='row' id = 'posts'></div>
+<div className='row' id = 'posts' dangerouslySetInnerHTML={{ __html: htmlBlogs }}></div>
 <div className = 'row'>
   <div className = 'col-8 offset-2'>
     <form>
@@ -22,35 +56,7 @@ function App() {
   </div>
 </div>
 </div>
-  );
+    );
 }
 
-
-let newName = document.getElementById('name');
-let newBlog = document.getElementById('newBlog');
-let posts = document.querySelector("#posts");
-
-function createBlog() {
-  let htmlBlogs='';
-  for (let i = 0; i < db.length; i++) {
-    const element = db[i];
-    htmlBlogs +=`<div id= 'blogs'>
-    <div id="elementN">${element.name}:</div><br>
-    <div id="elementB">${element.blog}</div>
-    </div>`
-  }
-posts.innerHTML = htmlBlogs;
-}
-createBlog() 
-
-const save = function saveBlog(e) {
-e.preventDefault();
-  const newEnter = {
-    name:newName.value,
-    blog:newBlog.value
-  }
-  db.push(newEnter)
-  createBlog() 
-  console.log(db);
-}
 export default App;
