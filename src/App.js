@@ -1,62 +1,53 @@
-import React from "react";
+import React, { useState } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import db from './db';
 
-
 function App() {
+const [blogs, setBlogs] = useState(db);
 
-  var htmlBlogs=''
   function createBlog() {
-    //let posts = document.getElementById('posts');
-    //console.log(db);
-    //console.log(db.length);
-    for (let i = 0; i < db.length; i++) {
-      const element = db[i];
-      htmlBlogs +=`<div class = "blogs">
-      <div class="elementN">${element.name}:</div>
-      <br><div class="elementB">${element.blog}</div>
-      </div>`
-    }
-    //console.log(htmlBlogs); OVDE SVE RADI KAKO TREBA KAD KLIKNEM NA -"SAVE"
-    return htmlBlogs;
+    return blogs.map((blog, index) => (
+      <div className="blogs" key={index}>
+        <div className="elementN">{blog.name}:</div>
+        <br />
+        <div className="elementB">{blog.blog}</div>
+      </div>
+    ));
   }
-  createBlog()
-
-  console.log(db);
-  //console.log(htmlBlogs); OVDE TEK PRORADI KAD KLIKNEM U VS CTRL+S, isto vazi i za db- ZATO NE MOZE DA PRIKAZE PODATKE U HTML
   
-  const save = function saveBlog(e) {
+  const saveBlog = function(e) {
     e.preventDefault();
     let newName = document.getElementById('name');
     let newBlog = document.getElementById('newBlog');
     const newEnter = {
-      name:newName.value,
-      blog:newBlog.value
-    }
-    db.push(newEnter)
-    createBlog()
+      name: newName.value,
+      blog: newBlog.value
+    };
+    setBlogs([...blogs, newEnter]);
+    newName.value = '';
+    newBlog.value = '';
   }
 
-return (
-<div className = 'container-fluid'>
-<ul className="nav">
-  <li className="nav-item">
-    <b>My React Blog</b>
-  </li>
-</ul>
-<div className='row' id = 'posts' dangerouslySetInnerHTML={{ __html: htmlBlogs }}></div>
-<div className = 'row'>
-  <div className = 'col-8 offset-2'>
-    <form>
-    <input type="text" className = "form-control" placeholder = 'Name' id = "name"></input>
-    <input type="text" className = "form-control" placeholder = 'Blog' id = "newBlog"></input>
-    <button className='form-control btn btn-info' id= "button" onClick={save}>Save</button>
-    </form>
-  </div>
-</div>
-</div>
-    );
+  return (
+    <div className='container-fluid'>
+      <ul className="nav">
+        <li className="nav-item">
+          <b>My React Blog</b>
+        </li>
+      </ul>
+      <div className='row' id='posts'>{createBlog()}</div>
+      <div className='row'>
+        <div className='col-8 offset-2'>
+          <form>
+            <input type="text" className="form-control" placeholder='Name' id="name"></input>
+            <input type="text" className="form-control" placeholder='Blog' id="newBlog"></input>
+            <button className='form-control btn btn-info' id="button" onClick={saveBlog}>Save</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default App;

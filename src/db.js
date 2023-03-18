@@ -6,5 +6,4 @@ let db = [{
     name:"Mita",
     blog:"Neki komentar"
 }];
-
 export default db;
